@@ -2397,4 +2397,6 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 .font-script { font-family: "Parisienne"; }
 
+.poem-content { white-space: pre; }
+
 /*# sourceMappingURL=style.css.map */
