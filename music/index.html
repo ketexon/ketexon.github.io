@@ -77,8 +77,30 @@
           <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
           <div class="card-body" style="transform: rotate(0);">
             <h3>
+              <a class="stretched-link" href="/music/2021-04-02-3-dances.html">
+                3 Waltzes Op. 3
+              </a>
+            </h3>
+          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></li></ul><div class="card-footer">
+            <span class="post-meta">02 April 2021</span>
+          </div>
+        </div><div class="card mb-3">
+          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
+          <div class="card-body" style="transform: rotate(0);">
+            <h3>
+              <a class="stretched-link" href="/music/2021-04-02-pieces.html">
+                3 Pieces Op. 2
+              </a>
+            </h3>
+          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></li></ul><div class="card-footer">
+            <span class="post-meta">02 April 2021</span>
+          </div>
+        </div><div class="card mb-3">
+          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
+          <div class="card-body" style="transform: rotate(0);">
+            <h3>
               <a class="stretched-link" href="/music/2021-04-02-24-preludes.html">
-                24 Preludes
+                24 Preludes Op. 1
               </a>
             </h3>
           </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span><span class="badge bg-primary me-2">WIP</span></li></ul><div class="card-footer">
@@ -178,6 +200,12 @@ for(let i in tooltipTriggerList){
 		}
 	)
 }
+
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(e)=>{
+		e.rel = "noopener noreferrer";
+	}
+)
 </script></body>
 
 </html>

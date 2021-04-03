@@ -78,15 +78,26 @@
   </header>
 
   <div class="post-content">
-    <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
+    <h2 id="me">Me</h2>
+<p>My name is Zane Clark and I go by the username Ketexon.</p>
 
-<p>You can find the source code for Minima at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/minima">minima</a></p>
+<p>I am a <span id="age"></span> year old student who finds joy in academia and creativity.</p>
 
-<p>You can find the source code for Jekyll at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/jekyll">jekyll</a></p>
+<p>In this website I</p>
+
+<h2 id="this-website">This website</h2>
+
+<p>This website is hosted on <a href="https://pages.github.com/" target="_blank">Github pages</a> (<a href="https://github.com/ketexon/ketexon.github.io" target="_blank">website</a>, <a href="https://github.com/ketexon/ketexon.github.io_source" target="_blank">source</a>).</p>
+
+<p>This website is based around <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and the <a href="https://github.com/jekyll/minima" target="_blank">Minima</a> theme, but the styling has been entirely redone using <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5.0</a> with <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">Material Icons</a>.</p>
+
+<script>
+document.querySelector("#age").appendChild(
+	document.createTextNode(
+		Math.floor((Date.now() - new Date("01 August 2003").getTime())/1000/60/60/24/365)
+	)
+)
+</script>
 
 
   </div>
@@ -185,6 +196,12 @@ for(let i in tooltipTriggerList){
 		}
 	)
 }
+
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(e)=>{
+		e.rel = "noopener noreferrer";
+	}
+)
 </script></body>
 
 </html>
