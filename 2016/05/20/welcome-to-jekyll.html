@@ -16,9 +16,9 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Welcome To Jekyll" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/2016/05/20/welcome-to-jekyll.html"},"@type":"BlogPosting","url":"/2016/05/20/welcome-to-jekyll.html","author":{"@type":"Person","name":"Zane Clark"},"headline":"Welcome To Jekyll","dateModified":"2016-05-20T00:00:00-07:00","datePublished":"2016-05-20T00:00:00-07:00","description":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Welcome To Jekyll","dateModified":"2016-05-20T00:00:00-07:00","datePublished":"2016-05-20T00:00:00-07:00","url":"/2016/05/20/welcome-to-jekyll.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2016/05/20/welcome-to-jekyll.html"},"author":{"@type":"Person","name":"Zane Clark"},"description":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ketexon" /><!-- FAVICONS -->
+<link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,6 +39,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body>
+    <noscript>
+      <div class="alert alert-danger m-0" role="alert">
+        Javascript is required to run this page.
+      </div>
+    </noscript>
     <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
       <div class="row-md-auto"><header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,7 +86,7 @@
       
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
-          <div class="wrapper container">
+          <div class="content-wrapper container">
             <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -183,7 +188,7 @@ for(let element of document.getElementsByClassName("social-media-list")[0].query
 	</div>
 </footer></div>
     </div><script defer>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.tooltip-hover)'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
 })
@@ -203,9 +208,25 @@ for(let i in tooltipTriggerList){
 	)
 }
 
+var tooltipTriggerListHover = [].slice.call(document.querySelectorAll('.tooltip-hover'))
+var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 document.querySelectorAll('a[target="_blank"]').forEach(
 	(e)=>{
 		e.rel = "noopener noreferrer";
+	}
+)
+
+document.querySelectorAll(".form-control-size-dynamic").forEach(
+	(e)=>{
+		e.style.width = ((e.value.length + 2) * 8) + 'px';
+	}
+)
+document.querySelectorAll(".form-control-auto-select").forEach(
+	(e)=>{
+		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
 </script></body>

@@ -2399,4 +2399,8 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 .poem-content { white-space: pre; }
 
+.home-col-body hr:last-of-type { display: none; }
+
+.ws-pre { white-space: pre; }
+
 /*# sourceMappingURL=style.css.map */

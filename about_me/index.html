@@ -3,16 +3,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Composition | Ketexon</title>
+<title>About Me | Ketexon</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Composition" />
+<meta property="og:title" content="About Me" />
 <meta name="author" content="Zane Clark" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Ketexon" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Composition" />
+<meta property="twitter:title" content="About Me" />
 <script type="application/ld+json">
-{"@type":"WebPage","headline":"Composition","url":"/composition/","author":{"@type":"Person","name":"Zane Clark"},"@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"About Me","url":"/about_me/","author":{"@type":"Person","name":"Zane Clark"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -83,94 +83,223 @@
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
           <div class="content-wrapper container">
-            <div class="home"><h1 class="page-heading">Composition</h1><script>
-const compositions = {3: "/composition/2021-04-02-3-dances.html",2: "/composition/2021-04-02-pieces-op-2.html",4: "/composition/2021-04-03-sonata-op-4.html",1: "/composition/2021-04-05-24-preludes.html",}
-function hashChange(){
-  const opus = parseInt(window.location.hash.substr(1));
-  if(opus){
-    let contentWrapper = document.querySelector(".content-wrapper");
-    while(contentWrapper.lastChild)
-      contentWrapper.removeChild(contentWrapper.lastChild);
+            <article class="post">
 
+  <header class="post-header h1">
+    <h1 class="post-title">About Me</h1>
+  </header>
 
-    let redirectText = document.createElement("h1");
-    redirectText.classList.add("display-5");
-    redirectText.appendChild(document.createTextNode("Redirecting"));
+  <div class="post-content">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-    let redirectTextEllipses = document.createElement("span");
-    redirectTextEllipses.classList.add("font-monospace", "fs-3", "ws-pre");
-    let redirectTextEllipsesNode = document.createTextNode("   ");
-    redirectTextEllipses.appendChild(redirectTextEllipsesNode);
+<p>My name is Zane Clark and I go by the username Ketexon.</p>
 
-    window.setInterval(()=>{
-      let cDots = (redirectTextEllipsesNode.nodeValue.match(/\./g)||[]).length;
-      cDots = cDots > 2 ? 0 : cDots + 1;
-      redirectTextEllipsesNode.nodeValue = "".padEnd(cDots, ".").padEnd(3);
-    }, 1000)
+<p>I am a <span id="age"></span> year old student who finds joy in academia and creativity.</p>
 
-    redirectText.appendChild(redirectTextEllipses);
+<h1 id="hobbies">Hobbies</h1>
 
-    let spinner = document.createElement("div");
-    spinner.classList.add("spinner-border");
-    spinner.setAttribute("role", "status");
-    
-    let spinnerContainer = document.createElement("div");
-    spinnerContainer.classList.add("d-flex", "align-items-center", "container-fluid", "flex-column");
-    spinnerContainer.appendChild(redirectText);
-    spinnerContainer.appendChild(spinner);
-    contentWrapper.appendChild(spinnerContainer);
-    window.location.replace(compositions[opus]);
-  }
+<h2 id="programming">Programming</h2>
+
+<p>I have been programming for about 6 years, and it is one of the hobbies in which I spend most of my time. I hope to major in computer science at University.</p>
+
+<h3 id="languages">Languages</h3>
+<p>In order of subjective skill level:</p>
+
+<div class="container language-container h1"></div>
+
+<p>I have also worked with x86 assembly (NASM), Lua, SQL, MongoDB, HTML5, and CSS3/SASS.</p>
+
+<h3 id="frameworks-libraries-apis">Frameworks, Libraries, APIs</h3>
+
+<div class="container frameworks-container h1"></div>
+
+<p>I have also worked with <a href="https://www.opengl.org/" target="_blank">OpenGL</a>, <a href="https://www.khronos.org/vulkan/" target="_blank">Vulkan</a>, <a href="https://www.libsdl.org/" target="_blank">SDL2</a>, <a href="https://amethyst.rs/" target="_blank">Amethyst</a>, <a href="https://love2d.org/" target="_blank">Love2D</a></p>
+
+<h3 id="engines-ides-text-editors-and-environments">Engines, IDEs, Text Editors, and Environments</h3>
+
+<div class="container ide-container h1"></div>
+
+<p>I also use Notepad++, Android Studio, and Unity.</p>
+
+<h3 id="build-tools-compilers-and-package-managers">Build tools, Compilers, and Package Managers</h3>
+
+<div class="container build-container h1"></div>
+
+<p>I also use Make, Cargo, MSVC, MinGW, pip, and GNU GCC.</p>
+
+<script>
+const languages = [
+	{
+		ico: "cplusplus",
+		name: "C++",
+		skill: "advanced",
+		when: "2018-now"
+	},
+	{
+		ico: "python",
+		name: "Python",
+		skill: "advanced",
+		when: "2018-now"
+	},
+	{
+		ico: "javascript",
+		name: "Javascript",
+		skill: "advanced",
+		when: "2014-now"
+	},
+	{
+		ico: "java",
+		name: "Java",
+		skill: "intermediate",
+		when: "2015-2018"
+	},
+	{
+		ico: "php",
+		name: "Java",
+		skill: "intermediate",
+		when: "2015-2016"
+	},
+	{
+		ico: "rust",
+		name: "Rust",
+		skill: "low intermediate",
+		when: "2021-now"
+	},
+	{
+		ico: "c",
+		name: "C",
+		skill: "high beginner"
+	},
+	{
+		ico: "csharp",
+		name: "C#",
+		skill: "high beginner"
+	},
+	{
+		ico: "fsharp",
+		name: "F#",
+		skill: "beginner",
+		when: "2021"
+	},
+	{
+		ico: "scala",
+		name: "Scala",
+		skill: "beginner",
+		when: "2020"
+	},
+];
+const defaultIconSuffix = "plain"
+let languageContainer = document.querySelector(".language-container");
+for(let langInfo of languages){
+	let icon = document.createElement("i");
+	icon.classList.add(`devicon-${langInfo.ico}-${langInfo.suffix || defaultIconSuffix}`);
+	icon.classList.add("tooltip-hover");
+	icon.dataset.bsToggle = "tooltip";
+	icon.dataset.bsPlacement = "bottom";
+	icon.title = `${langInfo.name}, ${langInfo.skill}${langInfo.when ? ", "+ langInfo.when : ""}`;
+	languageContainer.appendChild(icon);
 }
-hashChange();
-window.addEventListener("hashchange", hashChange);
+
+const frameworks = [
+	{
+		ico: "bootstrap",
+		name: "Bootstrap",
+		skill: "beginner",
+		when: "2021-now"
+	},
+	{
+		ico: "express",
+		name: "Express JS",
+		skill: "beginner",
+		when: "2019",
+		suffix: "original"
+	},
+	{
+		ico: "materialui",
+		name: "Material UI",
+		skill: "intermediate",
+		when: "2019-now"
+	},
+	{
+		ico: "react",
+		name: "React JS",
+		skill: "intermediate",
+		when: "2019-now"
+	},
+];
+let frameworksContainer = document.querySelector(".frameworks-container");
+for(let fwInfo of frameworks){
+	let icon = document.createElement("i");
+	icon.classList.add(`devicon-${fwInfo.ico}-${fwInfo.suffix || defaultIconSuffix}`);
+	icon.classList.add("tooltip-hover");
+	icon.dataset.bsToggle = "tooltip";
+	icon.dataset.bsPlacement = "bottom";
+	icon.title = `${fwInfo.name}, ${fwInfo.skill}${fwInfo.when ? ", "+ fwInfo.when : ""}`;
+	frameworksContainer.appendChild(icon);
+}
+
+
+const ides = [
+	{
+		ico: "visualstudio",
+		name: "Visual Studio/Visual Studio Code"
+	},
+	{
+		ico: "vim",
+		name: "Vim"
+	},
+	{
+		ico: "intellij",
+		name: "IntelliJ IDEA"
+	}
+];
+let ideContainer = document.querySelector(".ide-container");
+for(let ideInfo of ides){
+	let icon = document.createElement("i");
+	icon.classList.add(`devicon-${ideInfo.ico}-${ideInfo.suffix || defaultIconSuffix}`);
+	icon.classList.add("tooltip-hover");
+	icon.dataset.bsToggle = "tooltip";
+	icon.dataset.bsPlacement = "bottom";
+	icon.title = `${ideInfo.name}`;
+	ideContainer.appendChild(icon);
+}
+
+const buildTools = [
+	{
+		ico: "babel",
+		name: "Babel",
+	},
+	{
+		ico: "npm",
+		name: "NPM",
+	},
+	{
+		ico: "webpack",
+		name: "Webpack",
+	},
+];
+let buildToolsContainer = document.querySelector(".build-container");
+for(let btInfo of buildTools){
+	let icon = document.createElement("i");
+	icon.classList.add(`devicon-${btInfo.ico}-${btInfo.suffix || defaultIconSuffix}`);
+	icon.classList.add("tooltip-hover");
+	icon.dataset.bsToggle = "tooltip";
+	icon.dataset.bsPlacement = "bottom";
+	icon.title = `${btInfo.name}`;
+	buildToolsContainer.appendChild(icon);
+}
+
+document.querySelector("#age").appendChild(
+	document.createTextNode(
+		Math.floor((Date.now() - new Date("01 August 2003").getTime())/1000/60/60/24/365)
+	)
+)
 </script>
 
-  <div class="container px-0"><div class="card mb-3">
-          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
-          <div class="card-body" style="transform: rotate(0);">
-            <h3>
-              <a class="stretched-link" href="/composition/2021-04-03-sonata-op-4.html">
-                Sonata Op. 4
-              </a>
-            </h3>
-          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></li></ul><div class="card-footer">
-            <span class="post-meta">03 April 2021</span>
-          </div>
-        </div><div class="card mb-3">
-          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
-          <div class="card-body" style="transform: rotate(0);">
-            <h3>
-              <a class="stretched-link" href="/composition/2021-04-02-3-dances.html">
-                3 Waltzes Op. 3
-              </a>
-            </h3>
-          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></li></ul><div class="card-footer">
-            <span class="post-meta">02 April 2021</span>
-          </div>
-        </div><div class="card mb-3">
-          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
-          <div class="card-body" style="transform: rotate(0);">
-            <h3>
-              <a class="stretched-link" href="/composition/2021-04-02-pieces-op-2.html">
-                4 Pieces Op. 2
-              </a>
-            </h3>
-          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></li></ul><div class="card-footer">
-            <span class="post-meta">02 April 2021</span>
-          </div>
-        </div><div class="card mb-3">
-          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
-          <div class="card-body" style="transform: rotate(0);">
-            <h3>
-              <a class="stretched-link" href="/composition/2021-04-05-24-preludes.html">
-                24 Preludes Op. 1
-              </a>
-            </h3>
-          </div><ul class="list-group list-group-flush"><li class="list-group-item"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span><span class="badge bg-primary me-2">WIP</span></li></ul><div class="card-footer">
-            <span class="post-meta">02 April 2021 updated 05 April 2021</span>
-          </div>
-        </div></div></div>
+
+  </div>
+
+</article>
 
           </div>
         </div>

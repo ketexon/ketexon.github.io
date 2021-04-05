@@ -16,9 +16,9 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Some articles are just so short that we have to make the footer stick" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/essays/2016-05-19-super-short-article.html"},"@type":"BlogPosting","url":"/essays/2016-05-19-super-short-article.html","author":{"@type":"Person","name":"Zane Clark"},"headline":"Some articles are just so short that we have to make the footer stick","dateModified":"2016-05-19T00:00:00-07:00","datePublished":"2016-05-19T00:00:00-07:00","description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Some articles are just so short that we have to make the footer stick","dateModified":"2016-05-19T00:00:00-07:00","datePublished":"2016-05-19T00:00:00-07:00","url":"/essays/2016-05-19-super-short-article.html","mainEntityOfPage":{"@type":"WebPage","@id":"/essays/2016-05-19-super-short-article.html"},"author":{"@type":"Person","name":"Zane Clark"},"description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ketexon" /><!-- FAVICONS -->
+<link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,6 +39,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body>
+    <noscript>
+      <div class="alert alert-danger m-0" role="alert">
+        Javascript is required to run this page.
+      </div>
+    </noscript>
     <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
       <div class="row-md-auto"><header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,7 +86,7 @@
       
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
-          <div class="wrapper container">
+          <div class="content-wrapper container">
             <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
@@ -170,7 +175,7 @@ for(let element of document.getElementsByClassName("social-media-list")[0].query
 	</div>
 </footer></div>
     </div><script defer>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.tooltip-hover)'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
 })
@@ -190,9 +195,25 @@ for(let i in tooltipTriggerList){
 	)
 }
 
+var tooltipTriggerListHover = [].slice.call(document.querySelectorAll('.tooltip-hover'))
+var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 document.querySelectorAll('a[target="_blank"]').forEach(
 	(e)=>{
 		e.rel = "noopener noreferrer";
+	}
+)
+
+document.querySelectorAll(".form-control-size-dynamic").forEach(
+	(e)=>{
+		e.style.width = ((e.value.length + 2) * 8) + 'px';
+	}
+)
+document.querySelectorAll(".form-control-auto-select").forEach(
+	(e)=>{
+		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
 </script></body>

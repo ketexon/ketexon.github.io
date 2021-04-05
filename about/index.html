@@ -12,9 +12,9 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="About" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"/about/","author":{"@type":"Person","name":"Zane Clark"},"headline":"About","name":"Ketexon","@context":"https://schema.org"}</script>
+{"@type":"WebSite","headline":"About","url":"/about/","author":{"@type":"Person","name":"Zane Clark"},"name":"Ketexon","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ketexon" /><!-- FAVICONS -->
+<link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -35,6 +35,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body>
+    <noscript>
+      <div class="alert alert-danger m-0" role="alert">
+        Javascript is required to run this page.
+      </div>
+    </noscript>
     <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
       <div class="row-md-auto"><header class="site-header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -77,7 +82,7 @@
       
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
-          <div class="wrapper container">
+          <div class="content-wrapper container">
             <article class="post">
 
   <header class="post-header h1">
@@ -86,9 +91,10 @@
 
   <div class="post-content">
     <h2 id="contact">Contact</h2>
-<p>Please contact me through either of these emails.</p>
+<p>Please contact me through either of these emails for business purposes.</p>
 
-<div class="row">
+<div class="container-fluid p-0">
+	<div class="row">
 		<div class="col-auto">
 			
 				<div class="row mt-1">
@@ -120,17 +126,26 @@
 			
 		</div>
 	</div>
+</div>
+
+<p>You can contact me on discord for any purpose:
+<input class="form-control-plaintext d-inline-block form-control-size-dynamic form-control-auto-select p-1" type="text" readonly="" value="ketexon#8321" />
+<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0" onmouseup="navigator.clipboard.writeText('ketexon#8321'); setTimeout(()=&gt;this.blur(), 100)" data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+	<span class="material-icons">content_copy</span>
+</button>.</p>
 
 <h2 id="me">Me</h2>
 <p>My name is Zane Clark and I go by the username Ketexon.</p>
 
 <p>I am a <span id="age"></span> year old student who finds joy in academia and creativity.</p>
 
+<p>To know more about me, see <a href="/about_me/">about me</a>.</p>
+
 <h2 id="this-website">This website</h2>
 
 <p>This website is hosted on <a href="https://pages.github.com/" target="_blank">Github pages</a> (<a href="https://github.com/ketexon/ketexon.github.io" target="_blank">website</a>, <a href="https://github.com/ketexon/ketexon.github.io_source" target="_blank">source</a>).</p>
 
-<p>This website is based around <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and the <a href="https://github.com/jekyll/minima" target="_blank">Minima</a> theme, but the styling has been entirely redone using <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5.0</a> with <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">Material Icons</a>.</p>
+<p>This website is based around <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and the <a href="https://github.com/jekyll/minima" target="_blank">Minima</a> theme, but the styling has been entirely redone using <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5.0</a> with <a href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">Material Icons</a> and <a href="https://devicon.dev/" target="_blank">Devicon</a>.</p>
 
 <p>This website serves several purposes</p>
 <ul class="list-group">
@@ -138,7 +153,7 @@
 <li class="list-group-item">To publish (and archive) compositions</li>
 <li class="list-group-item">To publish (and archive) poetry and stories</li>
 <li class="list-group-item">To describe myself</li>
-<li class="list-group-item">To give a place to write about my intests</li>
+<li class="list-group-item">To give a place to write about my interests</li>
 <li class="list-group-item">To give a place to publish essays</li>
 </ul>
 
@@ -236,7 +251,7 @@ for(let element of document.getElementsByClassName("social-media-list")[0].query
 	</div>
 </footer></div>
     </div><script defer>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.tooltip-hover)'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
 })
@@ -256,9 +271,25 @@ for(let i in tooltipTriggerList){
 	)
 }
 
+var tooltipTriggerListHover = [].slice.call(document.querySelectorAll('.tooltip-hover'))
+var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 document.querySelectorAll('a[target="_blank"]').forEach(
 	(e)=>{
 		e.rel = "noopener noreferrer";
+	}
+)
+
+document.querySelectorAll(".form-control-size-dynamic").forEach(
+	(e)=>{
+		e.style.width = ((e.value.length + 2) * 8) + 'px';
+	}
+)
+document.querySelectorAll(".form-control-auto-select").forEach(
+	(e)=>{
+		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
 </script></body>
