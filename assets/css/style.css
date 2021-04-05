@@ -2403,4 +2403,8 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 .ws-pre { white-space: pre; }
 
+#markdown-toc li { padding-left: 0.5rem !important; }
+
+#markdown-toc li::marker { content: counter(list-item); }
+
 /*# sourceMappingURL=style.css.map */

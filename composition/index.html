@@ -87,7 +87,7 @@
 const compositions = {3: "/composition/2021-04-02-3-dances.html",2: "/composition/2021-04-02-pieces-op-2.html",4: "/composition/2021-04-03-sonata-op-4.html",1: "/composition/2021-04-05-24-preludes.html",}
 function hashChange(){
   const opus = parseInt(window.location.hash.substr(1));
-  if(opus){
+  if(opus && Object.keys(compositions).includes(opus.toString())){
     let contentWrapper = document.querySelector(".content-wrapper");
     while(contentWrapper.lastChild)
       contentWrapper.removeChild(contentWrapper.lastChild);
@@ -286,6 +286,33 @@ document.querySelectorAll(".form-control-auto-select").forEach(
 		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
+
+
+
+
+
+// TOC Pretty Generator
+let toc = document.querySelector("#markdown-toc");
+if(toc){
+	let card = document.createElement("div");
+	card.classList.add("card");
+	toc.parentNode.replaceChild(card, toc);
+	
+	let cardBody = document.createElement("div");
+	cardBody.classList.add("card-body", "ps-0");
+
+	toc.classList.add("m-0", "fs-5");
+	cardBody.appendChild(toc);
+
+	/*for(let li of toc.querySelectorAll("li")){
+		let p = document.createElement("p");
+		p.classList.add("card-text");
+		p.append(...li.querySelectorAll("a"));
+		cardBody.appendChild(p);
+	}*/
+
+	card.appendChild(cardBody);
+}
 </script></body>
 
 </html>

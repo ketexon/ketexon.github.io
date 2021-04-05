@@ -92,6 +92,19 @@
   <div class="post-content">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
+<ol id="markdown-toc">
+  <li><a href="#hobbies" id="markdown-toc-hobbies">Hobbies</a>    <ol>
+      <li><a href="#programming" id="markdown-toc-programming">Programming</a>        <ol>
+          <li><a href="#languages" id="markdown-toc-languages">Languages</a></li>
+          <li><a href="#frameworks-libraries-apis" id="markdown-toc-frameworks-libraries-apis">Frameworks, Libraries, APIs</a></li>
+          <li><a href="#engines-ides-text-editors-and-environments" id="markdown-toc-engines-ides-text-editors-and-environments">Engines, IDEs, Text Editors, and Environments</a></li>
+          <li><a href="#build-tools-compilers-and-package-managers" id="markdown-toc-build-tools-compilers-and-package-managers">Build tools, Compilers, and Package Managers</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
 <p>My name is Zane Clark and I go by the username Ketexon.</p>
 
 <p>I am a <span id="age"></span> year old student who finds joy in academia and creativity.</p>
@@ -415,6 +428,33 @@ document.querySelectorAll(".form-control-auto-select").forEach(
 		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
+
+
+
+
+
+// TOC Pretty Generator
+let toc = document.querySelector("#markdown-toc");
+if(toc){
+	let card = document.createElement("div");
+	card.classList.add("card");
+	toc.parentNode.replaceChild(card, toc);
+	
+	let cardBody = document.createElement("div");
+	cardBody.classList.add("card-body", "ps-0");
+
+	toc.classList.add("m-0", "fs-5");
+	cardBody.appendChild(toc);
+
+	/*for(let li of toc.querySelectorAll("li")){
+		let p = document.createElement("p");
+		p.classList.add("card-text");
+		p.append(...li.querySelectorAll("a"));
+		cardBody.appendChild(p);
+	}*/
+
+	card.appendChild(cardBody);
+}
 </script></body>
 
 </html>

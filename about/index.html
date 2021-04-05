@@ -90,7 +90,14 @@
   </header>
 
   <div class="post-content">
-    <h2 id="contact">Contact</h2>
+    <ol id="markdown-toc">
+  <li><a href="#contact" id="markdown-toc-contact">Contact</a></li>
+  <li><a href="#me" id="markdown-toc-me">Me</a></li>
+  <li><a href="#this-website" id="markdown-toc-this-website">This website</a></li>
+  <li><a href="#copyright-and-licensing" id="markdown-toc-copyright-and-licensing">Copyright and Licensing</a></li>
+</ol>
+
+<h2 id="contact">Contact</h2>
 <p>Please contact me through either of these emails for business purposes.</p>
 
 <div class="container-fluid p-0">
@@ -292,6 +299,33 @@ document.querySelectorAll(".form-control-auto-select").forEach(
 		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
+
+
+
+
+
+// TOC Pretty Generator
+let toc = document.querySelector("#markdown-toc");
+if(toc){
+	let card = document.createElement("div");
+	card.classList.add("card");
+	toc.parentNode.replaceChild(card, toc);
+	
+	let cardBody = document.createElement("div");
+	cardBody.classList.add("card-body", "ps-0");
+
+	toc.classList.add("m-0", "fs-5");
+	cardBody.appendChild(toc);
+
+	/*for(let li of toc.querySelectorAll("li")){
+		let p = document.createElement("p");
+		p.classList.add("card-text");
+		p.append(...li.querySelectorAll("a"));
+		cardBody.appendChild(p);
+	}*/
+
+	card.appendChild(cardBody);
+}
 </script></body>
 
 </html>
