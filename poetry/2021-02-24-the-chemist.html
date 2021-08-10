@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="The Chemist" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","datePublished":"2021-02-24T00:00:00-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"/poetry/2021-02-24-the-chemist.html"},"url":"/poetry/2021-02-24-the-chemist.html","author":{"@type":"Person","name":"Zane Clark"},"headline":"The Chemist","description":"Bitter coffee and tasteless pills Mix like oleum and blood. The black liquid instills The sense of here. Drugged Into awareness of being, Nudged into seeing.","dateModified":"2021-02-24T00:00:00-08:00","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"The Chemist","dateModified":"2021-02-24T00:00:00-08:00","datePublished":"2021-02-24T00:00:00-08:00","url":"/poetry/2021-02-24-the-chemist.html","mainEntityOfPage":{"@type":"WebPage","@id":"/poetry/2021-02-24-the-chemist.html"},"author":{"@type":"Person","name":"Zane Clark"},"description":"Bitter coffee and tasteless pills Mix like oleum and blood. The black liquid instills The sense of here. Drugged Into awareness of being, Nudged into seeing.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=M46EbGGa6d">
@@ -54,34 +54,39 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav mr-auto"><a class="nav-link  " href="/about/">About</a><div class="nav-item dropdown">
+        <div class="navbar-nav mr-auto"><script>console.log("About")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownAbout' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    About
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownAbout'><script>console.log("/about/ : /about/ : About")</script>
+                      <li><a class="dropdown-item" href="/about/">About</a></li><script>console.log("/about_me/ : /about_me/ : About Me")</script>
+                      <li><a class="dropdown-item" href="/about_me/">About Me</a></li></ul>
+                </div><script>console.log("Music")</script>
+                <div class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id='dropdownMusic' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Music
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby='dropdownMusic'><li><a class="dropdown-item" href="/composition/">Composition</a></li></ul>
-                </div><div class="nav-item dropdown">
+                  <ul class="dropdown-menu" aria-labelledby='dropdownMusic'><script>console.log("/composition/index.html : /composition/index.html : ")</script>
+                      <li><a class="dropdown-item" href="/composition/">Composition</a></li></ul>
+                </div><script>console.log("Poetry")</script>
+                <div class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id='dropdownPoetry' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Poetry
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby='dropdownPoetry'><li><a class="dropdown-item" href="/poetry/">Poems</a></li></ul>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownPoetry'><script>console.log("/poetry/index.html : /poetry/index.html : Poems")</script>
+                      <li><a class="dropdown-item" href="/poetry/">Poems</a></li></ul>
+                </div><script>console.log("Programming")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownProgramming' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Programming
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownProgramming'><script>console.log("/programming/blog/index.html : /programming/blog/index.html : Blog")</script>
+                      <li><a class="dropdown-item" href="/programming/blog/">Blog</a></li></ul>
                 </div></div>
       </div>
     </div>
   </nav>
-<!--
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Ketexon</a><nav class="navbar navbar-expand-lg navbar-light">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger"></div>
-      </nav></div>
--->
 </header>
 </div>
       
@@ -254,12 +259,6 @@ var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-document.querySelectorAll('a[target="_blank"]').forEach(
-	(e)=>{
-		e.rel = "noopener noreferrer";
-	}
-)
-
 document.querySelectorAll(".form-control-size-dynamic").forEach(
 	(e)=>{
 		e.style.width = ((e.value.length + 2) * 8) + 'px';
@@ -281,7 +280,7 @@ if(toc){
 	let card = document.createElement("div");
 	card.classList.add("card");
 	toc.parentNode.replaceChild(card, toc);
-	
+
 	let cardBody = document.createElement("div");
 	cardBody.classList.add("card-body", "ps-0");
 
@@ -297,6 +296,41 @@ if(toc){
 
 	card.appendChild(cardBody);
 }
+
+// Make external links target=_blank
+document.querySelectorAll('a').forEach(
+	(el)=>{
+		if(el.hostname != window.location.hostname && el.hostname != ""){
+      el.setAttribute("target", "_blank");
+    }
+	}
+)
+
+// Make target=_blank links noopener and noreferrer
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(el)=>{
+		el.rel = "noopener noreferrer";
+	}
+)
+
+
+// Sad-text emoji generator
+document.querySelectorAll('span.sad-text-emoji').forEach(
+	(el)=>{
+		const sad_text_emojis = [
+			"(ノ_<。)", "(-_-)", "(´-ω-`)", ".･ﾟﾟ･(／ω＼)･ﾟﾟ･.",
+			"(μ_μ)", "(ﾉД`)", "(-ω-、)", "。゜゜(´Ｏ`) ゜゜。",
+			"o(TヘTo)", "( ; ω ; )", "(｡╯︵╰｡)", "｡･ﾟﾟ*(>д<)*ﾟﾟ･｡",
+			"( ﾟ，_ゝ｀)", 	"(个_个)", 	"(╯︵╰,)", "｡･ﾟ(ﾟ><ﾟ)ﾟ･｡",
+			"( ╥ω╥ )", "(╯_╰)", "(╥_╥)", ".｡･ﾟﾟ･(＞_＜)･ﾟﾟ･｡.",
+			"(／ˍ・、)", "(ノ_<、)", "(╥﹏╥)", "｡ﾟ(｡ﾉωヽ｡)ﾟ｡",
+			"(つω`｡)", "(｡T ω T｡)", "(ﾉω･､)", "･ﾟ･(｡>ω<｡)･ﾟ･",
+			"(T_T)", "(>_<)", "(っ˘̩╭╮˘̩)っ", "｡ﾟ･ (>﹏<) ･ﾟ｡",
+			"o(〒﹏〒)o", "(｡•́︿•̀｡)", "(ಥ﹏ಥ)", "(ಡ‸ಡ)",
+		];
+		el.textContent = sad_text_emojis[Math.floor(Math.random() * sad_text_emojis.length)];
+	}
+)
 </script></body>
 
 </html>

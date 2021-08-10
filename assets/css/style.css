@@ -2407,4 +2407,8 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 #markdown-toc li::marker { content: counter(list-item); }
 
+.programming-post-content pre { background-color: #f5f5f5; border-radius: 5px; padding: 12px; }
+
+.programming-post-content > p > code { background-color: #f5f5f5; border-radius: 3px; padding: 2px 4px; }
+
 /*# sourceMappingURL=style.css.map */
