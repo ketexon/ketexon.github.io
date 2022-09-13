@@ -2,19 +2,21 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Sonata Op. 4 | Ketexon</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="Sonata Op. 4" />
 <meta name="author" content="Zane Clark" />
 <meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/composition/2021-04-03-sonata-op-4.html" />
+<meta property="og:url" content="http://localhost:4000/composition/2021-04-03-sonata-op-4.html" />
 <meta property="og:site_name" content="Ketexon" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-04-03T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Sonata Op. 4" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"/composition/2021-04-03-sonata-op-4.html","headline":"Sonata Op. 4","dateModified":"2021-04-03T00:00:00-07:00","datePublished":"2021-04-03T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"/composition/2021-04-03-sonata-op-4.html"},"author":{"@type":"Person","name":"Zane Clark"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Zane Clark"},"dateModified":"2021-04-03T00:00:00-07:00","datePublished":"2021-04-03T00:00:00-07:00","headline":"Sonata Op. 4","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/composition/2021-04-03-sonata-op-4.html"},"url":"http://localhost:4000/composition/2021-04-03-sonata-op-4.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=M46EbGGa6d">
@@ -79,7 +81,8 @@
                   <a class="nav-link dropdown-toggle" href="#" id='dropdownProgramming' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Programming
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby='dropdownProgramming'><script>console.log("/programming/blog/index.html : /programming/blog/index.html : Blog")</script>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownProgramming'><script>console.log("/programming/projects/index.html : /programming/projects/index.html : Projects")</script>
+                      <li><a class="dropdown-item" href="/programming/projects/">Projects</a></li><script>console.log("/programming/blog/index.html : /programming/blog/index.html : Blog")</script>
                       <li><a class="dropdown-item" href="/programming/blog/">Blog</a></li></ul>
                 </div></div>
       </div>
@@ -87,7 +90,7 @@
   </nav>
 </header>
 </div>
-      
+
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
           <div class="content-wrapper container">
@@ -97,6 +100,7 @@
 		<h1 class="post-title">Sonata Op. 4</h1><div class="container px-0 mb-2"><span class="badge bg-primary me-2">Solo Piano</span><span class="badge bg-primary me-2">Composition</span></div><div class="container post-tags"></div>
 		<h6 class="post-subtitle text-secondary">03 April 2021</h6>
 	</header>
+	<hr/>
 	<div class="post-content">
 		
 <div class="card audio-card mb-4">
@@ -157,7 +161,7 @@
 		miPlay = "play_arrow",
 		miVolume = "volume_up",
 		miMuted = "volume_off";
-	
+
 	const rewindAmount = 10;
 
 	const files = ["/assets/music/sonata op 4/Sonata in C Minor I Vivace.mp3",]
@@ -173,7 +177,7 @@
 		play.addEventListener(
 			"click",
 			()=>{
-				
+
 				if(!cards[cardIndex].playing){
 					cards[cardIndex].audio.play();
 				}
@@ -266,12 +270,12 @@
 					mute.muted = false;
 					mute.childNodes[0].nodeValue = miVoume;
 				}
-					
+
 				cards[cardIndex].audio.volume = parseInt(volumeRange.value)/100
 			}
 		);
 
-		
+
 		mute.addEventListener(
 			"click",
 			()=>{

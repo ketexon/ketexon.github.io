@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Debugger | Ketexon</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Debugger" />
+<meta name="author" content="Zane Clark" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Description I worked on this game as the technical lead under the supervision of the UCLA club ACM Studio Officer (now president) Ray Hsiao during the club’s year-long “Students Run Students” game design projects. The game is a 2D grid-based, turn-based puzzle game where you are a fly trap and your objective is to swallow all the bugs (ahcktually, they’re arthropods). However, some bugs are not only arthropods, but also computer bugs! As of now, their main feature is manipulating movement. The architecture of the game was set up to be decentralized from Unity. There is a Board and on the Board there are BoardObjects (including bugs, the player, and walls). For each turn, the player gets to make a BoardAction, which is only a movement, and the arthropods get to make their own BoardAction(s). What makes it interesting is that bugs can register BoardActionRules, which are basically a map of BoardActions. That is, they take in a BoardAction and spit a new one out. There is a helper class that lets you construct a BoardAction from an enable condition (the rule only works if condition), a filter (the rule only applies to BoardActions that condition) , and a map (the BoardAction gets turned into blank). Since BoardAction contains information about the creator BoardObject, the target BoardObject, and the Board, this allows for many complex behaviors including selecting what types of BoardObjects get affected, having them only work when the arthropod is not in the player’s mouth, and having the effect only work when the creator is within a range of the target. Reflection I definitely may have overarchitectured this one. I tried to make it as object oriented as possible. One problem with the OOP was that to create a new behavior for an arthropod, you’d need to create a subclass and add the behavior there. The problem: if you want two behaviors (eg. an arthropod that moves in its turn but also adds a rule) you can’t subclass both MovingArthropod and RestrictMotionArthropod, so you’d need to create a new subclass and copy-paste the code. I did fix this by creating ArthropodBehavior, which was essentially just the entire functionality of an arthropod subclass but contained in its own class. I added each arthropod behavior to the main Arthropod class and allowed you to disable each one. Another thing I did was try to make the code as expandable as possible. This is obvious with the BoardActionRule, which is generalized to a map. Since there were only a handleful of behaviors, this wasn’t necessary. There could have been a bool field labeled “InputFlipped”. This would have made it so the player would have to flip the controls themselves, which does not feel separated enough, but it would make it at least 7 times easier. Heck, Board probably wasn’t needed. We could have just used Unity’s physics and world coordinates for everything. I feel like I did not want to get dirty in this project. If something felt jank, I wanted to make it more “elegant”, which led to it being a large codebase for simple behaviors. Next time, I may heed to the advice that the architecture should not be generalizable until it has to be. Credits Name Role Ray Hsiao Team Lead, UI Designer/Programmer Alexander Chen Puzzle Designer, Concept/Sprite Artist Zane Clark Technical Lead, Software Architect, Programmer Mike Han UI Programmer Kevin Hong Gameplay Programmer Amber Jiang Art Director, Concept/Sprite/UI Artist Victoria Lam Concept/Tilemap/UI Artist Brad Lowe Gameplay Programmer Felix Peng Gameplay Programmer Anbu Vajuravel Writer Andrew Zhu Gameplay Programmer Spencer Gouw Composer" />
+<meta property="og:description" content="Description I worked on this game as the technical lead under the supervision of the UCLA club ACM Studio Officer (now president) Ray Hsiao during the club’s year-long “Students Run Students” game design projects. The game is a 2D grid-based, turn-based puzzle game where you are a fly trap and your objective is to swallow all the bugs (ahcktually, they’re arthropods). However, some bugs are not only arthropods, but also computer bugs! As of now, their main feature is manipulating movement. The architecture of the game was set up to be decentralized from Unity. There is a Board and on the Board there are BoardObjects (including bugs, the player, and walls). For each turn, the player gets to make a BoardAction, which is only a movement, and the arthropods get to make their own BoardAction(s). What makes it interesting is that bugs can register BoardActionRules, which are basically a map of BoardActions. That is, they take in a BoardAction and spit a new one out. There is a helper class that lets you construct a BoardAction from an enable condition (the rule only works if condition), a filter (the rule only applies to BoardActions that condition) , and a map (the BoardAction gets turned into blank). Since BoardAction contains information about the creator BoardObject, the target BoardObject, and the Board, this allows for many complex behaviors including selecting what types of BoardObjects get affected, having them only work when the arthropod is not in the player’s mouth, and having the effect only work when the creator is within a range of the target. Reflection I definitely may have overarchitectured this one. I tried to make it as object oriented as possible. One problem with the OOP was that to create a new behavior for an arthropod, you’d need to create a subclass and add the behavior there. The problem: if you want two behaviors (eg. an arthropod that moves in its turn but also adds a rule) you can’t subclass both MovingArthropod and RestrictMotionArthropod, so you’d need to create a new subclass and copy-paste the code. I did fix this by creating ArthropodBehavior, which was essentially just the entire functionality of an arthropod subclass but contained in its own class. I added each arthropod behavior to the main Arthropod class and allowed you to disable each one. Another thing I did was try to make the code as expandable as possible. This is obvious with the BoardActionRule, which is generalized to a map. Since there were only a handleful of behaviors, this wasn’t necessary. There could have been a bool field labeled “InputFlipped”. This would have made it so the player would have to flip the controls themselves, which does not feel separated enough, but it would make it at least 7 times easier. Heck, Board probably wasn’t needed. We could have just used Unity’s physics and world coordinates for everything. I feel like I did not want to get dirty in this project. If something felt jank, I wanted to make it more “elegant”, which led to it being a large codebase for simple behaviors. Next time, I may heed to the advice that the architecture should not be generalizable until it has to be. Credits Name Role Ray Hsiao Team Lead, UI Designer/Programmer Alexander Chen Puzzle Designer, Concept/Sprite Artist Zane Clark Technical Lead, Software Architect, Programmer Mike Han UI Programmer Kevin Hong Gameplay Programmer Amber Jiang Art Director, Concept/Sprite/UI Artist Victoria Lam Concept/Tilemap/UI Artist Brad Lowe Gameplay Programmer Felix Peng Gameplay Programmer Anbu Vajuravel Writer Andrew Zhu Gameplay Programmer Spencer Gouw Composer" />
+<link rel="canonical" href="http://localhost:4000/programming_projects/2022-09-12-debugger-game.html" />
+<meta property="og:url" content="http://localhost:4000/programming_projects/2022-09-12-debugger-game.html" />
+<meta property="og:site_name" content="Ketexon" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-12T00:00:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Debugger" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Zane Clark"},"dateModified":"2022-09-12T00:00:00-07:00","datePublished":"2022-09-12T00:00:00-07:00","description":"Description I worked on this game as the technical lead under the supervision of the UCLA club ACM Studio Officer (now president) Ray Hsiao during the club’s year-long “Students Run Students” game design projects. The game is a 2D grid-based, turn-based puzzle game where you are a fly trap and your objective is to swallow all the bugs (ahcktually, they’re arthropods). However, some bugs are not only arthropods, but also computer bugs! As of now, their main feature is manipulating movement. The architecture of the game was set up to be decentralized from Unity. There is a Board and on the Board there are BoardObjects (including bugs, the player, and walls). For each turn, the player gets to make a BoardAction, which is only a movement, and the arthropods get to make their own BoardAction(s). What makes it interesting is that bugs can register BoardActionRules, which are basically a map of BoardActions. That is, they take in a BoardAction and spit a new one out. There is a helper class that lets you construct a BoardAction from an enable condition (the rule only works if condition), a filter (the rule only applies to BoardActions that condition) , and a map (the BoardAction gets turned into blank). Since BoardAction contains information about the creator BoardObject, the target BoardObject, and the Board, this allows for many complex behaviors including selecting what types of BoardObjects get affected, having them only work when the arthropod is not in the player’s mouth, and having the effect only work when the creator is within a range of the target. Reflection I definitely may have overarchitectured this one. I tried to make it as object oriented as possible. One problem with the OOP was that to create a new behavior for an arthropod, you’d need to create a subclass and add the behavior there. The problem: if you want two behaviors (eg. an arthropod that moves in its turn but also adds a rule) you can’t subclass both MovingArthropod and RestrictMotionArthropod, so you’d need to create a new subclass and copy-paste the code. I did fix this by creating ArthropodBehavior, which was essentially just the entire functionality of an arthropod subclass but contained in its own class. I added each arthropod behavior to the main Arthropod class and allowed you to disable each one. Another thing I did was try to make the code as expandable as possible. This is obvious with the BoardActionRule, which is generalized to a map. Since there were only a handleful of behaviors, this wasn’t necessary. There could have been a bool field labeled “InputFlipped”. This would have made it so the player would have to flip the controls themselves, which does not feel separated enough, but it would make it at least 7 times easier. Heck, Board probably wasn’t needed. We could have just used Unity’s physics and world coordinates for everything. I feel like I did not want to get dirty in this project. If something felt jank, I wanted to make it more “elegant”, which led to it being a large codebase for simple behaviors. Next time, I may heed to the advice that the architecture should not be generalizable until it has to be. Credits Name Role Ray Hsiao Team Lead, UI Designer/Programmer Alexander Chen Puzzle Designer, Concept/Sprite Artist Zane Clark Technical Lead, Software Architect, Programmer Mike Han UI Programmer Kevin Hong Gameplay Programmer Amber Jiang Art Director, Concept/Sprite/UI Artist Victoria Lam Concept/Tilemap/UI Artist Brad Lowe Gameplay Programmer Felix Peng Gameplay Programmer Anbu Vajuravel Writer Andrew Zhu Gameplay Programmer Spencer Gouw Composer","headline":"Debugger","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/programming_projects/2022-09-12-debugger-game.html"},"url":"http://localhost:4000/programming_projects/2022-09-12-debugger-game.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><!-- FAVICONS -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=M46EbGGa6d">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=M46EbGGa6d">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=M46EbGGa6d">
+<link rel="manifest" href="/site.webmanifest?v=M46EbGGa6d">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=M46EbGGa6d" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon.ico?v=M46EbGGa6d">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<!-- MATERIAL ICONS -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" crossorigin="anonymous">
+<!-- SCRIPT-FONT -->
+
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet" crossorigin="anonymous"> 
+<!-- BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+    <noscript>
+      <div class="alert alert-danger m-0" role="alert">
+        Javascript is required to run this page.
+      </div>
+    </noscript>
+    <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
+      <div class="row-md-auto"><header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" rel="author" href="/">Ketexon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mr-auto"><script>console.log("About")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownAbout' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    About
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownAbout'><script>console.log("/about/ : /about/ : About")</script>
+                      <li><a class="dropdown-item" href="/about/">About</a></li><script>console.log("/about_me/ : /about_me/ : About Me")</script>
+                      <li><a class="dropdown-item" href="/about_me/">About Me</a></li></ul>
+                </div><script>console.log("Music")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownMusic' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Music
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownMusic'><script>console.log("/composition/index.html : /composition/index.html : ")</script>
+                      <li><a class="dropdown-item" href="/composition/">Composition</a></li></ul>
+                </div><script>console.log("Poetry")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownPoetry' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Poetry
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownPoetry'><script>console.log("/poetry/index.html : /poetry/index.html : Poems")</script>
+                      <li><a class="dropdown-item" href="/poetry/">Poems</a></li></ul>
+                </div><script>console.log("Programming")</script>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id='dropdownProgramming' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Programming
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby='dropdownProgramming'><script>console.log("/programming/projects/index.html : /programming/projects/index.html : Projects")</script>
+                      <li><a class="dropdown-item" href="/programming/projects/">Projects</a></li><script>console.log("/programming/blog/index.html : /programming/blog/index.html : Blog")</script>
+                      <li><a class="dropdown-item" href="/programming/blog/">Blog</a></li></ul>
+                </div></div>
+      </div>
+    </div>
+  </nav>
+</header>
+</div>
+
+      <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
+        <div class="container">
+          <div class="content-wrapper container">
+            <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">Debugger</h1><div class="container px-0 mb-2"><span class="badge bg-primary me-2">Game</span><span class="badge bg-primary me-2">C#</span><span class="badge bg-primary me-2">Unity</span></div><div class="container post-tags"></div><h6 class="post-subtitle text-secondary">
+      January 2022&ndash;September 2022
+    </h6><h6 class="post-subtitle text-secondary">Published 12 September 2022</h6><h6 class="post-subtitle text-secondary">
+      <a href="https://github.com/rh5140/srs-team-bug" target="_blank">Repo</a>
+    </h6></header><hr/>
+  <div class="post-content programming-post-content">
+    <ol id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#description">Description</a></li>
+<li class="toc-entry toc-h1"><a href="#reflection">Reflection</a></li>
+<li class="toc-entry toc-h1"><a href="#credits">Credits</a></li>
+</ol><h1 id="description">
+<a class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h1>
+
+<p>I worked on this game as the technical lead under the supervision of the UCLA club <a href="https://www.uclaacm.com/committees#studio">ACM Studio</a> Officer (now president) Ray Hsiao during the club’s year-long “Students Run Students” game design projects.</p>
+
+<p>The game is a 2D grid-based, turn-based puzzle game where you are a fly trap and your objective is to swallow all the bugs (<em>ahcktually, they’re arthropods</em>). However, some bugs are not only arthropods, but also <em>computer</em> bugs! As of now, their main feature is manipulating movement.</p>
+
+<p>The architecture of the game was set up to be decentralized from Unity. There is a <code class="language-plaintext highlighter-rouge">Board</code> and on the <code class="language-plaintext highlighter-rouge">Board</code> there are <code class="language-plaintext highlighter-rouge">BoardObjects</code> (including bugs, the player, and walls). For each turn, the player gets to make a <code class="language-plaintext highlighter-rouge">BoardAction</code>, which is only a movement, and the arthropods get to make their own <code class="language-plaintext highlighter-rouge">BoardAction</code>(s). What makes it interesting is that bugs can register <code class="language-plaintext highlighter-rouge">BoardActionRule</code>s, which are basically a map of <code class="language-plaintext highlighter-rouge">BoardAction</code>s. That is, they take in a <code class="language-plaintext highlighter-rouge">BoardAction</code> and spit a new one out. There is a helper class that lets you construct a <code class="language-plaintext highlighter-rouge">BoardAction</code> from an enable condition (the rule only works if <em>condition</em>), a filter (the rule only applies to <code class="language-plaintext highlighter-rouge">BoardAction</code>s that <em>condition</em>) , and a map (the <code class="language-plaintext highlighter-rouge">BoardAction</code> gets turned into <em>blank</em>). Since <code class="language-plaintext highlighter-rouge">BoardAction</code> contains information about the creator <code class="language-plaintext highlighter-rouge">BoardObject</code>, the target <code class="language-plaintext highlighter-rouge">BoardObject</code>, and the <code class="language-plaintext highlighter-rouge">Board</code>, this allows for many complex behaviors including selecting what types of <code class="language-plaintext highlighter-rouge">BoardObject</code>s get affected, having them only work when the arthropod is not in the player’s mouth, and having the effect only work when the creator is within a range of the target.</p>
+
+<h1 id="reflection">
+<a class="anchor" href="#reflection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reflection</h1>
+
+<p>I definitely may have overarchitectured this one. I tried to make it as object oriented as possible. One problem with the OOP was that to create a new behavior for an arthropod, you’d need to create a subclass and add the behavior there. The problem: if you want two behaviors (eg. an arthropod that moves in its turn but also adds a rule) you can’t subclass both <code class="language-plaintext highlighter-rouge">MovingArthropod</code> and <code class="language-plaintext highlighter-rouge">RestrictMotionArthropod</code>, so you’d need to create a new subclass and copy-paste the code. I did fix this by creating <code class="language-plaintext highlighter-rouge">ArthropodBehavior</code>, which was essentially just the entire functionality of an arthropod subclass but contained in its own class. I added each arthropod behavior to the main <code class="language-plaintext highlighter-rouge">Arthropod</code> class and allowed you to disable each one.</p>
+
+<p>Another thing I did was try to make the code as expandable as possible. This is obvious with the <code class="language-plaintext highlighter-rouge">BoardActionRule</code>, which is generalized to a map. Since there were only a handleful of behaviors, this wasn’t necessary. There could have been a bool field labeled “InputFlipped”. This would have made it so the player would have to flip the controls themselves, which does not feel separated enough, but it would make it at least 7 times easier. Heck, <code class="language-plaintext highlighter-rouge">Board</code> probably wasn’t needed. We could have just used Unity’s physics and world coordinates for everything.</p>
+
+<p>I feel like I did not want to get dirty in this project. If something felt jank, I wanted to make it more “elegant”, which led to it being a large codebase for simple behaviors. Next time, I may heed to the advice that the architecture should <em>not</em> be generalizable until it has to be.</p>
+
+<h1 id="credits">
+<a class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ray Hsiao</td>
+      <td>Team Lead, UI Designer/Programmer</td>
+    </tr>
+    <tr>
+      <td>Alexander Chen</td>
+      <td>Puzzle Designer, Concept/Sprite Artist</td>
+    </tr>
+    <tr>
+      <td>Zane Clark</td>
+      <td>Technical Lead, Software Architect, Programmer</td>
+    </tr>
+    <tr>
+      <td>Mike Han</td>
+      <td>UI Programmer</td>
+    </tr>
+    <tr>
+      <td>Kevin Hong</td>
+      <td>Gameplay Programmer</td>
+    </tr>
+    <tr>
+      <td>Amber Jiang</td>
+      <td>Art Director, Concept/Sprite/UI Artist</td>
+    </tr>
+    <tr>
+      <td>Victoria Lam</td>
+      <td>Concept/Tilemap/UI Artist</td>
+    </tr>
+    <tr>
+      <td>Brad Lowe</td>
+      <td>Gameplay Programmer</td>
+    </tr>
+    <tr>
+      <td>Felix Peng</td>
+      <td>Gameplay Programmer</td>
+    </tr>
+    <tr>
+      <td>Anbu Vajuravel</td>
+      <td>Writer</td>
+    </tr>
+    <tr>
+      <td>Andrew Zhu</td>
+      <td>Gameplay Programmer</td>
+    </tr>
+    <tr>
+      <td>Spencer Gouw</td>
+      <td>Composer</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+</article>
+          </div>
+        </div>
+      </main>
+      <div class="row-md-auto"><footer class="site-footer bg-light d-none d-lg-block py-2">
+	<data class="u-url" href="/"></data>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+					<div class="row">
+							<p class="lead">
+								Zane Clark
+							</p>
+						</div>
+					<div class="row">
+								<div class="col-auto">
+									
+										<div class="row mt-1">
+											<a class="u-email link-primary" href="mailto:xketexon@gmail.com">
+												xketexon@gmail.com
+											</a>
+										</div>
+									
+										<div class="row mt-1">
+											<a class="u-email link-primary" href="mailto:zane.a.s.clark@gmail.com">
+												zane.a.s.clark@gmail.com
+											</a>
+										</div>
+									
+								</div>
+								<div class="col-auto">
+									
+										<div class="row mt-1">
+											<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0"
+												onmouseup="navigator.clipboard.writeText('xketexon@gmail.com'); setTimeout(()=>this.blur(), 100)"
+												data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+												<span class="material-icons">content_copy</span>
+											</button>
+										</div>
+									
+										<div class="row mt-1">
+											<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0"
+												onmouseup="navigator.clipboard.writeText('zane.a.s.clark@gmail.com'); setTimeout(()=>this.blur(), 100)"
+												data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+												<span class="material-icons">content_copy</span>
+											</button>
+										</div>
+									
+								</div>
+							</div>
+			</div>
+			<div class="col">
+				<div class="social-links h-100"><div class="social-media-list container">
+  <div class="row align-items-center d-flex"><div class="col-sm">
+      <a rel="me" href="https://github.com/ketexon" title="ketexon"><img src="/assets/icons/github.svg"/></a>
+    </div><div class="col-sm">
+      <a rel="me" href="https://www.linkedin.com/in/zane-clark-52a48a166" title="zane-clark-52a48a166"><img src="/assets/icons/linkedin.png"/></a>
+    </div><div class="col-sm">
+      <a rel="me" href="https://twitter.com/ZaneASClark" title="ZaneASClark"><img src="/assets/icons/twitter.svg"/></a>
+    </div><div class="col-sm">
+      <a rel="me" href="https://www.youtube.com/channel/UCR4uswc9hdl2Zs5YY7LDgcQ" title="YouTube"><img src="/assets/icons/youtube.svg"/></a>
+    </div></div>
+</div>
+<script>
+for(let element of document.getElementsByClassName("social-media-list")[0].querySelectorAll("a")){
+    element.target = "_blank";
+}
+</script>
+</div>
+			</div>
+		</div>
+	</div>
+</footer></div>
+    </div><script defer>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.tooltip-hover)'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
+})
+for(let i in tooltipTriggerList){
+	let elem = tooltipTriggerList[i];
+	let tooltip = tooltipList[i];
+	elem.addEventListener(
+		"click",
+		()=>{
+			tooltip.show();
+			setTimeout(
+				()=>{
+					tooltip.hide()
+				}, 1000
+			)
+		}
+	)
+}
+
+var tooltipTriggerListHover = [].slice.call(document.querySelectorAll('.tooltip-hover'))
+var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+document.querySelectorAll(".form-control-size-dynamic").forEach(
+	(e)=>{
+		e.style.width = ((e.value.length + 2) * 8) + 'px';
+	}
+)
+document.querySelectorAll(".form-control-auto-select").forEach(
+	(e)=>{
+		e.addEventListener("click", (evt)=>{evt.target.select();});
+	}
+)
+
+
+
+
+
+// TOC Pretty Generator
+let toc = document.querySelector("#markdown-toc");
+if(toc){
+	let card = document.createElement("div");
+	card.classList.add("card");
+	toc.parentNode.replaceChild(card, toc);
+
+	let cardBody = document.createElement("div");
+	cardBody.classList.add("card-body", "ps-0");
+
+	toc.classList.add("m-0", "fs-5");
+	cardBody.appendChild(toc);
+
+	/*for(let li of toc.querySelectorAll("li")){
+		let p = document.createElement("p");
+		p.classList.add("card-text");
+		p.append(...li.querySelectorAll("a"));
+		cardBody.appendChild(p);
+	}*/
+
+	card.appendChild(cardBody);
+}
+
+// Make external links target=_blank
+document.querySelectorAll('a').forEach(
+	(el)=>{
+		if(el.hostname != window.location.hostname && el.hostname != ""){
+      el.setAttribute("target", "_blank");
+    }
+	}
+)
+
+// Make target=_blank links noopener and noreferrer
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(el)=>{
+		el.rel = "noopener noreferrer";
+	}
+)
+
+
+// Sad-text emoji generator
+document.querySelectorAll('span.sad-text-emoji').forEach(
+	(el)=>{
+		const sad_text_emojis = [
+			"(ノ_<。)", "(-_-)", "(´-ω-`)", ".･ﾟﾟ･(／ω＼)･ﾟﾟ･.",
+			"(μ_μ)", "(ﾉД`)", "(-ω-、)", "。゜゜(´Ｏ`) ゜゜。",
+			"o(TヘTo)", "( ; ω ; )", "(｡╯︵╰｡)", "｡･ﾟﾟ*(>д<)*ﾟﾟ･｡",
+			"( ﾟ，_ゝ｀)", 	"(个_个)", 	"(╯︵╰,)", "｡･ﾟ(ﾟ><ﾟ)ﾟ･｡",
+			"( ╥ω╥ )", "(╯_╰)", "(╥_╥)", ".｡･ﾟﾟ･(＞_＜)･ﾟﾟ･｡.",
+			"(／ˍ・、)", "(ノ_<、)", "(╥﹏╥)", "｡ﾟ(｡ﾉωヽ｡)ﾟ｡",
+			"(つω`｡)", "(｡T ω T｡)", "(ﾉω･､)", "･ﾟ･(｡>ω<｡)･ﾟ･",
+			"(T_T)", "(>_<)", "(っ˘̩╭╮˘̩)っ", "｡ﾟ･ (>﹏<) ･ﾟ｡",
+			"o(〒﹏〒)o", "(｡•́︿•̀｡)", "(ಥ﹏ಥ)", "(ಡ‸ಡ)",
+		];
+		el.textContent = sad_text_emojis[Math.floor(Math.random() * sad_text_emojis.length)];
+	}
+)
+</script></body>
+
+</html>
