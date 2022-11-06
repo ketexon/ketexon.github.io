@@ -2605,7 +2605,9 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + 2px); }
 
 .font-script { font-family: "Parisienne"; }
 
-.poem-content { white-space: pre; }
+.poem-content-no-wrap { white-space: pre; }
+
+.poem-content-wrap { white-space: pre-wrap; }
 
 .home-col-body hr:last-of-type { display: none; }
 
